@@ -1,0 +1,158 @@
+// BrandX Survey Explorer: DAX measures
+// Exported from Project_BrandX.pbix. All measures live in the _Measures table.
+// Model: Respondents, Questions, Items, Categories, Answers (fact), Bases (fact). See docs/data-model.md.
+
+
+// ======================================================================
+// Core: counts, bases and percentages
+// ======================================================================
+
+[Weighted Count] =
+SUMX ( Answers, RELATED ( Respondents[Weight] ) )
+
+[Weighted Base] =
+CALCULATE (
+    SUMX ( Bases, RELATED ( Respondents[Weight] ) ),
+    KEEPFILTERS ( TREATAS ( VALUES ( Categories[QuestionID] ), Questions[QuestionID] ) )
+)
+
+[Unweighted Base] =
+CALCULATE (
+    COUNTROWS ( Bases ),
+    KEEPFILTERS ( TREATAS ( VALUES ( Categories[QuestionID] ), Questions[QuestionID] ) )
+)
+
+[Weighted %] =
+DIVIDE ( [Weighted Count], [Weighted Base] )
+
+
+// ======================================================================
+// Exposed vs control
+// ======================================================================
+
+[Pct Exposed] =
+CALCULATE (
+    [Weighted %],
+    REMOVEFILTERS ( Respondents[StudyGroupOrder] ),
+    Respondents[StudyGroup] = "Exposed"
+)
+
+[Pct Control] =
+CALCULATE (
+    [Weighted %],
+    REMOVEFILTERS ( Respondents[StudyGroupOrder] ),
+    Respondents[StudyGroup] = "Control"
+)
+
+[n Exposed] =
+CALCULATE (
+    [Unweighted Base],
+    REMOVEFILTERS ( Respondents[StudyGroupOrder] ),
+    Respondents[StudyGroup] = "Exposed"
+)
+
+[n Control] =
+CALCULATE (
+    [Unweighted Base],
+    REMOVEFILTERS ( Respondents[StudyGroupOrder] ),
+    Respondents[StudyGroup] = "Control"
+)
+
+
+// ======================================================================
+// Significance testing (two-proportion z-test, 95%)
+// ======================================================================
+
+[Sig Exposed vs Control] =
+VAR n1 = [n Exposed]
+VAR n2 = [n Control]
+VAR p1 = COALESCE ( [Pct Exposed], 0 )
+VAR p2 = COALESCE ( [Pct Control], 0 )
+VAR valid =
+    HASONEVALUE ( Categories[CategoryLabel] )
+        && NOT ISBLANK ( n1 ) && NOT ISBLANK ( n2 )
+        && n1 >= 50 && n2 >= 50
+        && p1 <= 1 && p2 <= 1
+VAR p =
+    IF ( valid, DIVIDE ( p1 * n1 + p2 * n2, n1 + n2 ) )
+RETURN
+    IF (
+        valid && p > 0 && p < 1,
+        VAR se = SQRT ( p * ( 1 - p ) * ( 1 / n1 + 1 / n2 ) )
+        VAR z = ( p1 - p2 ) / se
+        RETURN IF ( z >= 1.96, 1, IF ( z <= -1.96, -1, 0 ) )
+    )
+
+[Sig Arrow] =
+IF (
+    ISBLANK ( [Weighted %] ) || SELECTEDVALUE ( Respondents[StudyGroup] ) = "Control",
+    BLANK (),
+    SWITCH ( [Sig Exposed vs Control], 1, "▲", -1, "▼", "" )
+)
+
+[Low Base Flag] =
+VAR n = [Unweighted Base]
+RETURN IF ( NOT ISBLANK ( n ) && n < 50, 1, 0 )
+
+
+// ======================================================================
+// Display: labels and sorting
+// ======================================================================
+
+[Bar Label] =
+VAR v = [Weighted %]
+VAR a = [Sig Arrow]
+RETURN
+    IF ( ISBLANK ( v ), BLANK (), FORMAT ( v, "0.0%" ) & IF ( a = "▲" || a = "▼", " " & a ) )
+
+[Grid Label] =
+VAR v = [Weighted %]
+VAR a = [Sig Arrow]
+RETURN
+    IF ( ISBLANK ( v ), BLANK (), FORMAT ( v, "0%" ) & IF ( a = "▲" || a = "▼", " " & a ) )
+
+[Sort Key] =
+VAR v      = [Weighted %]
+VAR q      = SELECTEDVALUE ( Questions[QuestionID] )
+VAR lbl    = SELECTEDVALUE ( Categories[CategoryLabel] )
+VAR ord    = MIN ( Categories[CategorySort] )
+VAR byVal  = q IN { "C2", "C6", "C7" }
+VAR pinned = lbl IN { "Other", "None / don't know", "No clear message / unsure" }
+RETURN
+    IF (
+        ISBLANK ( v ),
+        BLANK (),
+        IF ( byVal, IF ( pinned, 1000 + ord, - [Pct Exposed] ), ord )
+    )
+
+
+// ======================================================================
+// Display: titles and notes
+// ======================================================================
+
+[Question Title] =
+SELECTEDVALUE ( Questions[QuestionLabel], "Select a question" )
+
+[Filter Note] =
+VAR g  = IF ( ISFILTERED ( Respondents[Gender] ),        "Gender: "   & CONCATENATEX ( VALUES ( Respondents[Gender] ),        Respondents[Gender],        ", " ) & ". " )
+VAR a  = IF ( ISFILTERED ( Respondents[AgeGroup] ),      "Age: "      & CONCATENATEX ( VALUES ( Respondents[AgeGroup] ),      Respondents[AgeGroup],      ", " ) & ". " )
+VAR r  = IF ( ISFILTERED ( Respondents[Region] ),        "Region: "   & CONCATENATEX ( VALUES ( Respondents[Region] ),        Respondents[Region],        ", " ) & ". " )
+VAR c  = IF ( ISFILTERED ( Respondents[CommunityType] ), "Community: " & CONCATENATEX ( VALUES ( Respondents[CommunityType] ), Respondents[CommunityType], ", " ) & ". " )
+VAR u  = IF ( ISFILTERED ( Respondents[ChipUsage] ),     "Chip usage: " & CONCATENATEX ( VALUES ( Respondents[ChipUsage] ),   Respondents[ChipUsage],     ", " ) & ". " )
+VAR s  = IF ( ISFILTERED ( Respondents[SnackPurchase] ), "Snack purchase: " & CONCATENATEX ( VALUES ( Respondents[SnackPurchase] ), Respondents[SnackPurchase], ", " ) & ". " )
+VAR p  = IF ( ISFILTERED ( Respondents[ShoppingRole] ),  "Shopper: "  & CONCATENATEX ( VALUES ( Respondents[ShoppingRole] ),  Respondents[ShoppingRole],  ", " ) & ". " )
+VAR t  = g & a & r & c & u & s & p
+RETURN IF ( t = "", "", " Filtered to " & t )
+
+[Base Note] =
+VAR nE = CALCULATE ( DISTINCTCOUNT ( Bases[RespondentID] ), REMOVEFILTERS ( Respondents[StudyGroupOrder] ), Respondents[StudyGroup] = "Exposed" )
+VAR nC = CALCULATE ( DISTINCTCOUNT ( Bases[RespondentID] ), REMOVEFILTERS ( Respondents[StudyGroupOrder] ), Respondents[StudyGroup] = "Control" )
+VAR low = ( nE < 50 ) || ( NOT ISBLANK ( nC ) && nC < 50 )
+RETURN
+    "Base: " & SELECTEDVALUE ( Questions[BaseDescription] ) & ". "
+        & "Unweighted n: exposed " & FORMAT ( nE, "#,0" )
+        & IF ( ISBLANK ( nC ), "", ", control " & FORMAT ( nC, "#,0" ) )
+        & ". Weighted results."
+        & IF ( ISBLANK ( nC ), "", " ▲▼ exposed significantly higher / lower than control (95%)." )
+        & [Filter Note]
+        & IF ( low, " Caution: base below 50, results are indicative only and not tested for significance.", "" )

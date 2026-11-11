@@ -1,0 +1,30 @@
+ItemKey,QuestionID,ItemLabel,ItemOrder
+A5|ChannelA,A5,Channel A,1
+A5|ChannelB,A5,Channel B,2
+A5|ChannelC,A5,Channel C,3
+A5|ChannelD,A5,Channel D,4
+A5|ChannelE,A5,Channel E,5
+B1|-,B1,(none),0
+B2|-,B2,(none),0
+B2a|BrandX,B2a,BrandX,1
+B2a|Lays,B2a,Lay's,2
+B2a|Pringles,B2a,Pringles,3
+B2a|Ruffles,B2a,Ruffles,4
+B2a|KettleBrand,B2a,Kettle Brand,5
+B2a|Utz,B2a,Utz,6
+B2a|Herrs,B2a,Herr's,7
+B3|-,B3,(none),0
+B4|-,B4,(none),0
+B5|-,B5,(none),0
+C1|-,C1,(none),0
+C2|-,C2,(none),0
+C3|-,C3,(none),0
+C4|-,C4,(none),0
+C5|Creative,C5,The advertisement was creative,1
+C5|Memorable,C5,The advertisement was memorable,2
+C5|TryBrandX,C5,It made me want to try BrandX,3
+C5|Believable,C5,The advertisement was believable,4
+C5|Connected,C5,The advertisement connected with me,5
+C5|Informative,C5,The advertisement was informative,6
+C6|-,C6,(none),0
+C7|-,C7,(none),0

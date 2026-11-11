@@ -1,0 +1,15 @@
+QuestionID,QuestionOrder,Section,QuestionLabel,QuestionType,ChartType,ExposedOnly,CompareGroups,BaseDescription,BaseVariesByItem
+A5,1,A: Screening,"A5. During the past month, how frequently have you watched each of the following TV channels? (Select one per line)",Grid,100% stacked bar,False,True,All respondents. Viewing of Channel A or B defines the exposed group; control respondents watched neither,False
+B1,2,B: Brand metrics,"B1. When you think of potato chips, what brands come to mind first? Please list as many as you can think of. (Unaided, coded)",Multi,Bar (sorted),False,True,"All respondents; multiple mentions, so answers add to more than 100%",False
+B2,3,B: Brand metrics,"B2. Which of the following potato chip brands, if any, have you heard of? (Select all that apply)",Multi,Bar (sorted),False,True,All respondents; multiple answers allowed,False
+B2a,4,B: Brand metrics,"B2.a On a scale of 1 to 10, how would you rate your overall impression of each of the following potato chip brands? (1 = Poor, 10 = Excellent)",Grid,100% stacked bar,False,True,Respondents aware of each brand (B2); the base differs by brand,True
+B3,5,B: Brand metrics,B3. How familiar are you with BrandX potato chips? (Select one),Single,Bar,False,True,All respondents,False
+B4,6,B: Brand metrics,"B4. When you are considering purchasing potato chips, how likely are you to consider BrandX? (Select one)",Single,Bar,False,True,All respondents,False
+B5,7,B: Brand metrics,"B5. On a scale of 1 to 10, how likely are you to recommend BrandX potato chips to a friend or family member?",Single,Bar,False,True,All respondents; NPS = % promoters (9-10) minus % detractors (1-6),False
+C1,8,C: Advertisement,C1. Have you seen or heard any advertisements for BrandX potato chips recently? (Select one),Single,Bar,True,False,Exposed respondents only,False
+C2,9,C: Advertisement,C2. Where did you see or hear the advertisement? (Select one),Single,Bar,True,False,Exposed respondents who recall BrandX advertising (C1 = Yes),False
+C3,10,C: Advertisement,"C3. After watching this advertisement, do you recall seeing it before? (Select one)",Single,Bar,True,False,Exposed respondents only,False
+C4,11,C: Advertisement,"C4. On a scale of 1 to 5, how much did you enjoy the advertisement you just watched? (Select one)",Single,Bar,True,False,Exposed respondents only,False
+C5,12,C: Advertisement,C5. Please indicate how much you agree or disagree with the following statements about the advertisement. (Select one per line),Grid,100% stacked bar,True,False,Exposed respondents only,False
+C6,13,C: Advertisement,"C6. In your own words, please describe the main message or key takeaway of the advertisement. (Open-ended, coded into themes)",Multi,Bar (sorted),True,False,Exposed respondents only; a response can carry more than one theme,False
+C7,14,C: Advertisement,C7. Which of the following do you believe was the main message of the advertisement? (Select one),Single,Bar,True,False,Exposed respondents only,False

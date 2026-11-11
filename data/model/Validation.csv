@@ -1,0 +1,19 @@
+Check,QuestionID,CategoryKey,ItemKey,StudyGroup,ExpectedWeightedPct,ExpectedUnweightedBase
+Aided awareness: BrandX,B2,B2|BrandX,B2|-,Exposed,0.792,500
+Aided awareness: BrandX,B2,B2|BrandX,B2|-,Control,0.5319,500
+Unaided recall: BrandX,B1,B1|BrandX,B1|-,Exposed,0.3032,500
+Unaided recall: BrandX,B1,B1|BrandX,B1|-,Control,0.1606,500
+Consideration: somewhat likely,B4,B4|4,B4|-,Exposed,0.3593,500
+Consideration: somewhat likely,B4,B4|4,B4|-,Control,0.25,500
+Consideration: very likely,B4,B4|5,B4|-,Exposed,0.2164,500
+Consideration: very likely,B4,B4|5,B4|-,Control,0.1114,500
+Promoters (9-10),B5,B5|3,B5|-,Exposed,0.3484,500
+Promoters (9-10),B5,B5|3,B5|-,Control,0.1776,500
+Detractors (1-6),B5,B5|1,B5|-,Exposed,0.4389,500
+Detractors (1-6),B5,B5|1,B5|-,Control,0.6912,500
+BrandX impression 9-10 (among aware),B2a,B2a|3,B2a|BrandX,Exposed,0.3757,393
+BrandX impression 9-10 (among aware),B2a,B2a|3,B2a|BrandX,Control,0.2517,267
+Recall recent BrandX advertising,C1,C1|1,C1|-,Exposed,0.6503,500
+Ad seen on TV (among C1 = Yes),C2,C2|1,C2|-,Exposed,0.5269,318
+Enjoyed it a lot (5),C4,C4|5,C4|-,Exposed,0.2027,500
+Main message: great taste,C7,C7|1,C7|-,Exposed,0.3423,500

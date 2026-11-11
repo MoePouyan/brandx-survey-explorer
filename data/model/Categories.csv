@@ -1,0 +1,88 @@
+CategoryKey,QuestionID,CategoryLabel,CategoryOrder,Colour,CategorySort
+A5|1,A5,Daily,1,#0B2E6B,1
+A5|2,A5,2-3 times a week,2,#0047AB,2
+A5|3,A5,A few times a month,3,#5B8BD0,3
+A5|4,A5,Rarely,4,#A9C3E8,4
+A5|5,A5,Never,5,#D9DEE7,5
+B1|BrandX,B1,BrandX,1,#0047AB,6
+B1|Lays,B1,Lay's,2,#0047AB,7
+B1|Pringles,B1,Pringles,3,#0047AB,8
+B1|Ruffles,B1,Ruffles,4,#0047AB,9
+B1|Doritos,B1,Doritos,5,#0047AB,10
+B1|MissVickies,B1,Miss Vickie's,6,#0047AB,11
+B1|KettleBrand,B1,Kettle Brand,7,#0047AB,12
+B1|Cheetos,B1,Cheetos,8,#0047AB,13
+B1|OldDutch,B1,Old Dutch,9,#0047AB,14
+B1|Tostitos,B1,Tostitos,10,#0047AB,15
+B1|Takis,B1,Takis,11,#0047AB,16
+B1|SunChips,B1,SunChips,12,#0047AB,17
+B1|CapeCod,B1,Cape Cod,13,#0047AB,18
+B1|Herrs,B1,Herr's,14,#0047AB,19
+B1|Utz,B1,Utz,15,#0047AB,20
+B1|StoreBrand,B1,Store / private label,16,#0047AB,21
+B1|PC,B1,President's Choice,17,#0047AB,22
+B1|None,B1,None / don't know,18,#0047AB,23
+B2|BrandX,B2,BrandX,1,#0047AB,6
+B2|Lays,B2,Lay's,2,#0047AB,7
+B2|Pringles,B2,Pringles,3,#0047AB,8
+B2|Ruffles,B2,Ruffles,4,#0047AB,9
+B2|KettleBrand,B2,Kettle Brand,5,#0047AB,12
+B2|Utz,B2,Utz,6,#0047AB,20
+B2|Herrs,B2,Herr's,7,#0047AB,19
+B2a|1,B2a,1-6,1,#C26A00,24
+B2a|2,B2a,7-8,2,#D9DEE7,25
+B2a|3,B2a,9-10,3,#0047AB,26
+B3|1,B3,Never heard of it,1,#C26A00,27
+B3|2,B3,"Heard of it, know very little",2,#F2B872,28
+B3|3,B3,"Somewhat familiar, never consumed",3,#D9DEE7,29
+B3|4,B3,"Familiar, consume occasionally",4,#7FA6DB,30
+B3|5,B3,"Very familiar, consume regularly",5,#0047AB,31
+B4|1,B4,Very unlikely,1,#C26A00,32
+B4|2,B4,Somewhat unlikely,2,#F2B872,33
+B4|3,B4,Neutral,3,#D9DEE7,34
+B4|4,B4,Somewhat likely,4,#7FA6DB,35
+B4|5,B4,Very likely,5,#0047AB,36
+B5|1,B5,Detractors (1-6),1,#C26A00,37
+B5|2,B5,Passives (7-8),2,#D9DEE7,38
+B5|3,B5,Promoters (9-10),3,#0047AB,39
+C1|1,C1,Yes,1,#0047AB,40
+C1|2,C1,No,2,#E39A3B,41
+C1|3,C1,Not sure,3,#D9DEE7,52
+C2|1,C2,Television,1,#0047AB,42
+C2|2,C2,Radio,2,#0047AB,43
+C2|3,C2,"Social media (e.g., Facebook, Instagram, TikTok)",3,#0047AB,44
+C2|4,C2,"Online ads (e.g., websites, YouTube)",4,#0047AB,45
+C2|5,C2,Newspapers or magazines,5,#0047AB,46
+C2|6,C2,Outdoor billboards or posters,6,#0047AB,47
+C2|7,C2,In-store displays or promotions,7,#0047AB,48
+C2|8,C2,Word of mouth,8,#0047AB,49
+C2|9,C2,Other,9,#0047AB,78
+C3|1,C3,"Yes, remember seeing it before",1,#0047AB,50
+C3|2,C3,"No, do not recall it",2,#E39A3B,51
+C3|3,C3,Not sure,3,#D9DEE7,52
+C4|1,C4,1 - Did not enjoy it at all,1,#C26A00,53
+C4|2,C4,2,2,#F2B872,54
+C4|3,C4,3,3,#D9DEE7,55
+C4|4,C4,4,4,#7FA6DB,56
+C4|5,C4,5 - Enjoyed it a lot,5,#0047AB,57
+C5|5,C5,Strongly agree,1,#0047AB,58
+C5|4,C5,Somewhat agree,2,#7FA6DB,59
+C5|3,C5,Neither agree nor disagree,3,#D9DEE7,60
+C5|2,C5,Somewhat disagree,4,#F2B872,61
+C5|1,C5,Strongly disagree,5,#C26A00,62
+C6|taste_flavor,C6,Great taste and flavour,1,#0047AB,63
+C6|quality_ingredients,C6,High-quality ingredients,2,#0047AB,64
+C6|crunchy_texture,C6,"Crunchy, satisfying texture",3,#0047AB,65
+C6|fun_social,C6,"Fun, any occasion",4,#0047AB,66
+C6|healthier_option,C6,Healthier snack choice,5,#0047AB,67
+C6|promotion_limited,C6,Limited-time offer,6,#0047AB,68
+C6|brand_cta,C6,Brand mention only,7,#0047AB,69
+C6|generic_ad,C6,"""A chips ad"", no specific message",8,#0047AB,70
+C6|no_clear_message,C6,No clear message / unsure,9,#0047AB,71
+C7|1,C7,Great taste and flavor,1,#0047AB,72
+C7|2,C7,Made with high-quality ingredients,2,#0047AB,73
+C7|3,C7,A healthier or better snack choice,3,#0047AB,74
+C7|4,C7,Fun and enjoyable for any occasion,4,#0047AB,75
+C7|5,C7,Crunchy and satisfying texture,5,#0047AB,76
+C7|6,C7,Limited-time offer or promotion,6,#0047AB,77
+C7|7,C7,Other,7,#0047AB,78

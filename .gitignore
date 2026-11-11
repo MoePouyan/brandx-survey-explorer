@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Power BI
+*.pbix.bak
+.pbi/cache.abf
+.pbi/localSettings.json
+**/.pbi/cache.abf
+**/.pbi/localSettings.json
+
+# Office temp and system files
+~$*
+*.tmp
+.DS_Store
+Thumbs.db
+desktop.ini
